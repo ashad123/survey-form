@@ -42,12 +42,13 @@ app.post('/', function(req, res) {
     // console.log(firstname);
 
     const mailTransporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
+        service: "gmail",
         auth: {
+            type: 'OAuth2',
             user: process.env.AUTH_EMAIL,
-            pass: process.env.AUTH_PASS
+            clientId: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            accessToken: process.env.ACCESS_TOKEN
         }
 
     });
