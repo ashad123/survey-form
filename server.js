@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.post('/', function(req, res) {
+app.post('/send', function(req, res) {
    
     let firstname = req.body.firstname;
     let lastname = req.body.lastname;
@@ -43,6 +43,7 @@ app.post('/', function(req, res) {
 
     const mailTransporter = nodemailer.createTransport({
         service: "gmail",
+        port: 587,
         auth: {
             type: 'OAuth2',
             user: process.env.AUTH_EMAIL,
