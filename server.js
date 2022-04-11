@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const dotenv = require('dotenv')
 const bodyParser = require('body-parser');
 
+
 const app = express();
 
 require('dotenv').config()
@@ -23,6 +24,9 @@ app.get('/', function(req, res) {
 
     res.sendFile(__dirname + '/index.html');
 });
+
+
+
 
 
 app.post('/send', function(req, res) {
@@ -74,7 +78,7 @@ app.post('/send', function(req, res) {
     mailTransporter.sendMail(mailDetails, function(err, result){
         if(err){
             console.log(err);
-            res.send('error');
+            res.send(err);
         }else{
             console.log("Email sent:" + result.response);
             res.send("Email was send!");
